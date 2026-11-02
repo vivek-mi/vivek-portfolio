@@ -1,0 +1,55 @@
+<section class="skills section" id="skills">
+  <div class="container">
+    <div class="skills__header">
+      <p class="section-label">Technical Skills</p>
+      <h2 class="section-title">
+        What I <span>Build With</span>
+      </h2>
+      <p class="section-subtitle">
+        A verified collection of technologies I have used in production environments,
+        personal projects, and professional work.
+      </p>
+    </div>
+
+    <div class="skills__legend">
+      <span class="skills__legend-item">
+        <span class="skills__dot skills__dot--expert"></span> Practical Experience
+      </span>
+      <span class="skills__legend-item">
+        <span class="skills__dot skills__dot--proficient"></span> Working Knowledge
+      </span>
+      <span class="skills__legend-item">
+        <span class="skills__dot skills__dot--learning"></span> Currently Learning
+      </span>
+    </div>
+
+    <div class="skills__grid">
+      @for (cat of categories; track cat.label) {
+        <div class="skill-card card">
+          <div class="skill-card__header">
+            <span class="skill-card__icon" aria-hidden="true">{{ cat.icon }}</span>
+            <h3 class="skill-card__title">{{ cat.label }}</h3>
+          </div>
+          <div class="skill-card__pills">
+            @for (skill of cat.skills; track skill.name) {
+              <span class="skill-pill" [class]="'skill-pill--' + skill.level"
+                    [attr.title]="levelLabel[skill.level]">
+                {{ skill.name }}
+              </span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Core Concepts -->
+    <div class="skills__core">
+      <h3 class="skills__core-title">Core CS Concepts</h3>
+      <div class="skills__core-pills">
+        @for (concept of ['Data Structures & Algorithms', 'Object-Oriented Programming', 'DBMS', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'ML Fundamentals']; track concept) {
+          <span class="chip">{{ concept }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</section>

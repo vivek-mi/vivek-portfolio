@@ -1,0 +1,170 @@
+<section class="experience section" id="experience">
+  <div class="container">
+    <div class="experience__header">
+      <p class="section-label">Professional Experience</p>
+      <h2 class="section-title">
+        Where I've <span>Worked</span>
+      </h2>
+    </div>
+
+    <div class="experience__layout">
+      <!-- Timeline -->
+      <div class="experience__timeline">
+        <div class="exp-card card">
+          <!-- Company Header -->
+          <div class="exp-card__header">
+            <div class="exp-card__company-info">
+              <div class="exp-card__logo" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2"/>
+                  <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="exp-card__company">FiveRegTech Co. Pvt. Ltd.</h3>
+                <a href="#" class="exp-card__company-sub">Connect Bharat &amp; Startworks Platforms</a>
+              </div>
+            </div>
+            <div class="exp-card__meta">
+              <span class="exp-card__badge exp-card__badge--current">
+                <span class="exp-card__live-dot" aria-hidden="true"></span>
+                Current
+              </span>
+            </div>
+          </div>
+
+          <div class="exp-card__info-row">
+            <span class="exp-card__info-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Remote
+            </span>
+            <span class="exp-card__info-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              {{ tenure }}
+            </span>
+            <span class="exp-card__info-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              Full-Stack Development
+            </span>
+          </div>
+
+          <div class="exp-card__roles">
+            <!-- Full-time -->
+            <div class="exp-role exp-role--current">
+              <div class="exp-card__role-row">
+                <h4 class="exp-card__role">
+                  Software Developer
+                  <span class="exp-role__type">Full-Time</span>
+                </h4>
+                <div class="exp-card__duration">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  October 2026 – Present
+                </div>
+              </div>
+              <p class="exp-role__note">Converted to a full-time role after the internship, based on delivery across both production platforms.</p>
+              <ul class="exp-card__bullets">
+                <li>
+                  Own end-to-end feature delivery on <strong>Connect Bharat</strong> and <strong>Startworks</strong>, from requirement breakdown and Angular UI through Node.js/Express APIs to MongoDB schema design.
+                </li>
+                <li>
+                  Build and maintain <strong>reusable Angular and TypeScript modules</strong> and RESTful services that power core workflows for live users.
+                </li>
+                <li>
+                  Keep production stable by diagnosing and fixing issues across the front-end, API and database layers.
+                </li>
+                <li>
+                  Work in an agile team with <strong>Git/GitHub</strong> workflows, code reviews and daily standups.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Internship -->
+            <div class="exp-role">
+              <div class="exp-card__role-row">
+                <h4 class="exp-card__role">
+                  Software Developer Intern
+                  <span class="exp-role__type exp-role__type--muted">Internship</span>
+                </h4>
+                <div class="exp-card__duration">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  March 2026 – September 2026
+                </div>
+              </div>
+              <ul class="exp-card__bullets">
+                <li>
+                  Developed <strong>Angular and TypeScript</strong> front-end modules for Connect Bharat, turning product requirements into responsive, reusable components used across multiple features.
+                </li>
+                <li>
+                  Built <strong>RESTful APIs with Node.js and Express.js</strong> and designed MongoDB/Mongoose data models behind core application workflows.
+                </li>
+                <li>
+                  Shipped full-stack features to <strong>Startworks</strong>, a live production platform, owning work from UI to database.
+                </li>
+                <li>
+                  Applied data structures and algorithms to build efficient solutions under real <strong>production constraints</strong>.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="exp-card__stack">
+            @for (tech of ['Angular', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST APIs', 'Git', 'Agile']; track tech) {
+              <span class="chip">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+        <!-- Currently Learning -->
+        <div class="exp-card exp-card--dim card">
+          <div class="exp-card__header">
+            <div class="exp-card__company-info">
+              <div class="exp-card__logo exp-card__logo--accent" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="exp-card__company">Amity University, Uttar Pradesh</h3>
+                <span class="exp-card__company-sub">B.Tech Computer Science &amp; Engineering</span>
+              </div>
+            </div>
+            <span class="exp-card__badge exp-card__badge--edu">Education</span>
+          </div>
+
+          <div class="exp-card__role-row">
+            <h4 class="exp-card__role" style="font-size: 0.95rem; color: var(--color-text-secondary)">
+              Graduated 2026 · Greater Noida, UP
+            </h4>
+            <div class="exp-card__duration">2022 – 2026</div>
+          </div>
+
+          <ul class="exp-card__bullets" style="margin-top: 0.75rem;">
+            <li>Core subjects: Data Structures &amp; Algorithms, DBMS, Operating Systems, Computer Networks, Software Engineering.</li>
+            <li>Developed strong foundations in OOP (Java), web development, and algorithmic problem solving.</li>
+            <li>Completed certifications from Cisco, NPTEL and Coursera alongside coursework.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

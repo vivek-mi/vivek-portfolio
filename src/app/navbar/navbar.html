@@ -1,0 +1,66 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="container navbar__inner">
+    <!-- Logo -->
+    <a href="#home" class="navbar__logo" (click)="scrollTo('#home'); $event.preventDefault()">
+      <span class="logo-mark">VM</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="navbar__links" role="list">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a [href]="link.href"
+             class="navbar__link"
+             (click)="scrollTo(link.href); $event.preventDefault()">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA -->
+    <div class="navbar__cta">
+      <a href="/assets/resume/Vivek_Mishra_Resume.pdf"
+         download="Vivek_Mishra_Resume.pdf"
+         class="btn btn-outline navbar__resume-btn"
+         aria-label="Download Resume">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Resume
+      </a>
+
+      <!-- Hamburger -->
+      <button class="navbar__hamburger" [class.open]="menuOpen()"
+              (click)="toggleMenu()" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile" [class.open]="menuOpen()">
+    <ul role="list">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a [href]="link.href"
+             (click)="scrollTo(link.href); $event.preventDefault()">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+      <li>
+        <a href="/assets/resume/Vivek_Mishra_Resume.pdf"
+           download="Vivek_Mishra_Resume.pdf"
+           class="btn btn-primary"
+           (click)="closeMenu()">
+          Download Resume
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

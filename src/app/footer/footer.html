@@ -1,0 +1,69 @@
+<footer class="footer">
+  <div class="divider"></div>
+  <div class="container footer__inner">
+    <div class="footer__left">
+      <a href="#home" class="footer__logo" (click)="$event.preventDefault(); scrollTo('#home')">
+        <span class="footer__logo-mark">VM</span>
+        <span class="footer__logo-name">Vivek Mishra</span>
+      </a>
+      <p class="footer__tagline">Full-Stack Developer (MEAN Stack)</p>
+      <p class="footer__location">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Greater Noida, Uttar Pradesh, India
+      </p>
+    </div>
+
+    <div class="footer__links">
+      <div class="footer__link-group">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about" (click)="$event.preventDefault(); scrollTo('#about')">About</a></li>
+          <li><a href="#skills" (click)="$event.preventDefault(); scrollTo('#skills')">Skills</a></li>
+          <li><a href="#experience" (click)="$event.preventDefault(); scrollTo('#experience')">Experience</a></li>
+          <li><a href="#projects" (click)="$event.preventDefault(); scrollTo('#projects')">Projects</a></li>
+          <li><a href="#certifications" (click)="$event.preventDefault(); scrollTo('#certifications')">Certifications</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__link-group">
+        <h4>Connect</h4>
+        <ul>
+          <li>
+            <a href="https://github.com/vivek-mi" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/vivekmishra01" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            <a href="mailto:vivek79054@gmail.com">vivek79054&#64;gmail.com</a>
+          </li>
+          <li>
+            <a href="tel:+917905456461">+91 7905456461</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p class="footer__copy">
+        &copy; {{ year }} Vivek Mishra &mdash; Built with
+        <span class="footer__stack">Angular · Node.js · MongoDB</span>
+      </p>
+      <a href="/assets/resume/Vivek_Mishra_Resume.pdf"
+         download="Vivek_Mishra_Resume.pdf"
+         class="footer__resume-link">
+        Download Resume
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>

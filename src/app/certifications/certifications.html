@@ -1,0 +1,189 @@
+<section class="certifications section" id="certifications">
+  <div class="container">
+    <div class="certs__header">
+      <p class="section-label">Certifications</p>
+      <h2 class="section-title">
+        Verified <span>Credentials</span>
+      </h2>
+      <p class="section-subtitle">
+        Verified credentials from Adobe, Cisco, NPTEL and Coursera, covering networking,
+        professional skills, AI-assisted design and digital marketing.
+      </p>
+    </div>
+
+    <!-- Featured: Adobe Professional Certificate -->
+    <div class="cert-featured card">
+      <div class="cert-featured__main">
+        <div class="cert-card__issuer-row">
+          <div class="cert-card__issuer-badge cert-card__issuer-badge--adobe">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.5 2H22v20L14.5 2zM9.5 2H2v20L9.5 2zM12 9.4L16.8 22h-3.1l-1.4-3.6H8.8L12 9.4z"/>
+            </svg>
+          </div>
+          <span class="cert-card__issuer">Adobe · Coursera</span>
+          <span class="cert-featured__tag">Professional Certificate</span>
+        </div>
+        <h3 class="cert-featured__title">Adobe Marketing Specialist</h3>
+        <p class="cert-card__desc">
+          A five-course professional program on building data-driven campaigns: marketing
+          strategy, SEO and automation, Adobe Express, and using generative AI to design and
+          scale content across channels.
+        </p>
+        <div class="cert-card__footer">
+          <span class="cert-card__date">Issued Feb 9, 2026</span>
+          <a class="cert-card__view" href="https://coursera.org/verify/professional-cert/RTQ0Q1HP43PK"
+             target="_blank" rel="noopener noreferrer">
+            Verify credential
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="cert-featured__courses">
+        <p class="cert-featured__courses-label">5 courses completed</p>
+        <ol>
+          @for (course of adobeCourses; track course) {
+            <li>{{ course }}</li>
+          }
+        </ol>
+      </div>
+    </div>
+
+    <div class="certs__grid">
+      @for (cert of adobeCertificates; track cert.id) {
+        <div class="cert-card card">
+          <div class="cert-card__issuer-row">
+            <div class="cert-card__issuer-badge cert-card__issuer-badge--adobe">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.5 2H22v20L14.5 2zM9.5 2H2v20L9.5 2zM12 9.4L16.8 22h-3.1l-1.4-3.6H8.8L12 9.4z"/>
+              </svg>
+            </div>
+            <span class="cert-card__issuer">Adobe · Coursera</span>
+          </div>
+          <h3 class="cert-card__title">{{ cert.title }}</h3>
+          <p class="cert-card__desc">{{ cert.desc }}</p>
+          <div class="cert-card__footer">
+            <span class="cert-card__date">Feb 2026</span>
+            <a class="cert-card__view" [href]="'https://coursera.org/verify/' + cert.id"
+               target="_blank" rel="noopener noreferrer">
+              Verify
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M7 17L17 7M7 7h10v10"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      }
+
+      <!-- Cisco Packet Tracer -->
+      <div class="cert-card card">
+        <div class="cert-card__issuer-row">
+          <div class="cert-card__issuer-badge cert-card__issuer-badge--cisco">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <span class="cert-card__issuer">Cisco</span>
+        </div>
+        <h3 class="cert-card__title">Introduction to Packet Tracer</h3>
+        <p class="cert-card__desc">
+          Hands-on experience using Cisco Packet Tracer to simulate and
+          troubleshoot network topologies.
+        </p>
+        <div class="cert-card__footer">
+          <span class="cert-card__date">Cisco Networking Academy</span>
+          <a class="cert-card__view" href="https://drive.google.com/file/d/1umHefsOEPyWBvBD7rMCuGncjv4cIgkB8/view?usp=drivesdk"
+             target="_blank" rel="noopener noreferrer">
+            View
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Network Basics -->
+      <div class="cert-card card">
+        <div class="cert-card__issuer-row">
+          <div class="cert-card__issuer-badge cert-card__issuer-badge--cisco">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <span class="cert-card__issuer">Cisco</span>
+        </div>
+        <h3 class="cert-card__title">Network Basics</h3>
+        <p class="cert-card__desc">
+          Fundamentals of computer networking including IP addressing,
+          subnetting, and network communication protocols.
+        </p>
+        <div class="cert-card__footer">
+          <span class="cert-card__date">Cisco Networking Academy</span>
+          <a class="cert-card__view" href="https://drive.google.com/file/d/1uha91EOEK8mwvS0Gy-tKuoMIVeu1ZRjy/view?usp=drivesdk"
+             target="_blank" rel="noopener noreferrer">
+            View
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- NPTEL -->
+      <div class="cert-card card">
+        <div class="cert-card__issuer-row">
+          <div class="cert-card__issuer-badge cert-card__issuer-badge--nptel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <span class="cert-card__issuer">NPTEL</span>
+        </div>
+        <h3 class="cert-card__title">Body Language: Key to Professional Success</h3>
+        <p class="cert-card__desc">
+          Professional communication and non-verbal skills for workplace
+          effectiveness and career development.
+        </p>
+        <div class="cert-card__footer">
+          <span class="cert-card__date">IIT / NPTEL — Govt. of India</span>
+          <a class="cert-card__view" href="https://drive.google.com/file/d/178FoMicMetW1-xC74n60_K6qElXeaJp5/view?usp=drivesdk"
+             target="_blank" rel="noopener noreferrer">
+            View
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coursera -->
+      <div class="cert-card card">
+        <div class="cert-card__issuer-row">
+          <div class="cert-card__issuer-badge cert-card__issuer-badge--adobe">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.5 2H22v20L14.5 2zM9.5 2H2v20L9.5 2zM12 9.4L16.8 22h-3.1l-1.4-3.6H8.8L12 9.4z"/>
+            </svg>
+          </div>
+          <span class="cert-card__issuer">Adobe · Coursera</span>
+        </div>
+        <h3 class="cert-card__title">Design Fundamentals with AI</h3>
+        <p class="cert-card__desc">
+          Principles of visual design, UI/UX thinking, and leveraging AI tools
+          for creative design workflows.
+        </p>
+        <div class="cert-card__footer">
+          <span class="cert-card__date">Adobe Marketing Specialist program</span>
+          <a class="cert-card__view" href="https://www.coursera.org/account/accomplishments/verify/K2PT4NBPB85Q"
+             target="_blank" rel="noopener noreferrer">
+            Verify
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

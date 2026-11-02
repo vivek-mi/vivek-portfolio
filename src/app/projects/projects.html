@@ -1,0 +1,216 @@
+<section class="projects section" id="projects">
+  <div class="container">
+    <div class="projects__header">
+      <p class="section-label">Featured Projects</p>
+      <h2 class="section-title">
+        Things I've <span>Built</span>
+      </h2>
+      <p class="section-subtitle">
+        Production tools I build and run at work, followed by personal projects
+        across web and Android.
+      </p>
+    </div>
+
+    <app-work></app-work>
+
+    <div class="projects__subhead">
+      <span>Personal Projects</span>
+    </div>
+
+    <div class="projects__grid">
+      <!-- Project 1: Face Detection -->
+      <article class="project-card card">
+        <div class="project-card__top">
+          <div class="project-card__icon project-card__icon--android">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="8" cy="8" r="2"/>
+              <circle cx="16" cy="8" r="2"/>
+              <path d="M9 14s1 2 3 2 3-2 3-2"/>
+              <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12z"/>
+            </svg>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/vivek-mi"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="project-card__link"
+               aria-label="View source code on GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card__number">01</div>
+
+        <h3 class="project-card__title">Face Detection Android App</h3>
+        <p class="project-card__description">
+          Real-time on-device face detection Android application using Google ML Kit,
+          extracting facial attributes such as smile probability and eye-open state
+          from live camera input via CameraX.
+        </p>
+
+        <div class="project-card__highlights">
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Real-time on-device ML inference with Google ML Kit
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Smooth camera integration with CameraX API
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Extracts smile, eye-open probability attributes
+          </div>
+        </div>
+
+        <div class="project-card__stack">
+          @for (t of ['Java', 'Kotlin', 'Google ML Kit', 'CameraX', 'Android SDK']; track t) {
+            <span class="chip">{{ t }}</span>
+          }
+        </div>
+      </article>
+
+      <!-- Project 2: Weather App -->
+      <article class="project-card card">
+        <div class="project-card__top">
+          <div class="project-card__icon project-card__icon--angular">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+              <circle cx="12" cy="12" r="5"/>
+            </svg>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/vivek-mi/Weathers"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="project-card__link"
+               aria-label="View source code on GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card__number">02</div>
+
+        <h3 class="project-card__title">Weather Forecasting App</h3>
+        <p class="project-card__description">
+          Responsive Angular application displaying real-time temperature, humidity,
+          and wind speed for user-searched locations via the OpenWeatherMap REST API,
+          with robust error handling and loading state management.
+        </p>
+
+        <div class="project-card__highlights">
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Real-time weather data via OpenWeatherMap API
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Error handling for API failures and network delays
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Responsive, mobile-friendly UI with Angular
+          </div>
+        </div>
+
+        <div class="project-card__stack">
+          @for (t of ['Angular', 'TypeScript', 'REST APIs', 'HTML5', 'CSS3']; track t) {
+            <span class="chip">{{ t }}</span>
+          }
+        </div>
+      </article>
+
+      <!-- Project 3: SANGEET -->
+      <article class="project-card card">
+        <div class="project-card__top">
+          <div class="project-card__icon project-card__icon--music">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/vivek-mi/iSangeet"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="project-card__link"
+               aria-label="View source code on GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card__number">03</div>
+
+        <h3 class="project-card__title">SANGEET — Music Streaming</h3>
+        <p class="project-card__description">
+          Android music streaming application supporting audio playback, playlist
+          management and library search. Features SQLite integration for local song
+          metadata and efficient activity lifecycle management for smooth playback.
+        </p>
+
+        <div class="project-card__highlights">
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Audio playback, playlist management &amp; library search
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            SQLite for local metadata and user preferences
+          </div>
+          <div class="project-card__highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Efficient activity lifecycle for smooth playback
+          </div>
+        </div>
+
+        <div class="project-card__stack">
+          @for (t of ['Java', 'Android SDK', 'SQLite', 'Android Studio']; track t) {
+            <span class="chip">{{ t }}</span>
+          }
+        </div>
+      </article>
+    </div>
+
+    <!-- GitHub CTA -->
+    <div class="projects__cta">
+      <p class="projects__cta-text">More projects on GitHub</p>
+      <a href="https://github.com/vivek-mi"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        vivek-mi on GitHub
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,139 @@
+<div class="work">
+  <div class="work__heading">
+    <span class="work__company">
+      <span class="work__dot" aria-hidden="true"></span>
+      Built at FiveRegTech
+    </span>
+    <span class="work__rule" aria-hidden="true"></span>
+  </div>
+
+  <!-- Issues Board -->
+  <article class="showcase card">
+    <div class="showcase__body">
+      <p class="showcase__tag">Internal tool · cowork.iiest.org</p>
+      <h3 class="showcase__title">Jira-Style Issue Tracker</h3>
+      <p class="showcase__desc">
+        The team's own work tracker for planning and shipping client projects. Work is organised as
+        <strong>Projects → Iterations → Functionalities → Issues</strong>, and every issue carries a
+        developer, a tester and a full assignment trail.
+      </p>
+      <ul class="showcase__points">
+        <li>Four-level work hierarchy with project keys, project leads and linked clients</li>
+        <li>Story and Bug issues with priority, due date and an In Progress → In Review → Done flow</li>
+        <li>Separate developer and tester assignment, reassignment with a required reason, and full assignment history</li>
+        <li>Dashboard charts, Excel and PDF export, and a secure store for project credentials and documents</li>
+      </ul>
+      <div class="showcase__stack">
+        @for (t of ['Angular', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'Excel / PDF export']; track t) {
+          <span class="chip">{{ t }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="showcase__visual" aria-hidden="true">
+      <div class="mock">
+        <div class="mock__bar">
+          <span></span><span></span><span></span>
+          <em>Issues Board</em>
+        </div>
+        <div class="mock__crumbs">Project <b>›</b> Iteration <b>›</b> Functionality <b>›</b> Issues</div>
+        <div class="board">
+          @for (col of boardColumns; track col.name) {
+            <div class="board__col">
+              <p class="board__name">{{ col.name }}</p>
+              @for (issue of col.issues; track $index) {
+                <div class="issue">
+                  <div class="issue__top">
+                    <span class="issue__type" [class.issue__type--bug]="issue.type === 'Bug'">{{ issue.type }}</span>
+                    <span class="issue__prio issue__prio--{{ issue.p }}"></span>
+                  </div>
+                  <span class="skel skel--w80"></span>
+                  <span class="skel skel--w50"></span>
+                  <div class="issue__people">
+                    <span class="avatar">Dev</span>
+                    <span class="avatar avatar--qa">QA</span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Lead Portal -->
+  <article class="showcase showcase--flip card">
+    <div class="showcase__body">
+      <p class="showcase__tag">Internal tool · cowork.iiest.org</p>
+      <h3 class="showcase__title">Lead &amp; Client Management Portal</h3>
+      <p class="showcase__desc">
+        The CRM behind the <strong>StartWorks</strong> business centre. It captures enquiries from the website
+        and from conference bookings, moves each lead through a defined workflow, and tracks the clients it converts.
+      </p>
+      <ul class="showcase__points">
+        <li>Lead workflow from Not Contacted to Contacted or Lost, with source and status tracking</li>
+        <li>Leads captured from the website contact form and a public conference-booking form</li>
+        <li>Filters by source and status with live totals, plus PDF export</li>
+        <li>Client tracking for conference and virtual clients, including board-room and conference-room bookings</li>
+      </ul>
+      <div class="showcase__stack">
+        @for (t of ['Angular', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'PDF export']; track t) {
+          <span class="chip">{{ t }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="showcase__visual" aria-hidden="true">
+      <div class="mock">
+        <div class="mock__bar">
+          <span></span><span></span><span></span>
+          <em>Lead Portal</em>
+        </div>
+        <div class="stages">
+          <div class="stage"><i class="stage__dot stage__dot--new"></i>Not Contacted</div>
+          <b class="stage__arrow">→</b>
+          <div class="stage"><i class="stage__dot stage__dot--ok"></i>Contacted</div>
+          <b class="stage__arrow">→</b>
+          <div class="stage"><i class="stage__dot stage__dot--lost"></i>Lost</div>
+        </div>
+        <div class="leads">
+          @for (row of leadRows; track $index) {
+            <div class="lead">
+              <span class="lead__avatar"></span>
+              <div class="lead__text">
+                <span class="skel skel--w60"></span>
+                <span class="lead__source">{{ row.source }}</span>
+              </div>
+              <span class="pill pill--{{ row.status === 'Contacted' ? 'ok' : row.status === 'Lost' ? 'lost' : 'new' }}">{{ row.status }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Compact cards -->
+  <div class="work__grid">
+    @for (p of compact; track p.title) {
+      <article class="mini card">
+        <p class="showcase__tag">{{ p.tag }}</p>
+        <h3 class="mini__title">{{ p.title }}</h3>
+        <p class="mini__desc">{{ p.description }}</p>
+        <div class="showcase__stack">
+          @for (t of p.stack; track t) {
+            <span class="chip">{{ t }}</span>
+          }
+        </div>
+        @if (p.link) {
+          <a class="mini__link" [href]="p.link.href" target="_blank" rel="noopener noreferrer">
+            Visit {{ p.link.label }}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </a>
+        }
+      </article>
+    }
+  </div>
+</div>
