@@ -391,7 +391,15 @@
     }
 
     @media (max-width: 480px) {
-      display: none;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.65rem;
+      box-shadow: inset 0 0 0 100px rgba(8, 8, 8, 0.72);
+
+      &--angular { top: 2%; right: 0; }
+      &--java { top: 10%; left: 0; }
+      &--ts { top: 46%; left: -2%; }
+      &--node { top: auto; bottom: 14%; right: -2%; }
+      &--mongo { bottom: 0; left: 6%; }
     }
   }
 

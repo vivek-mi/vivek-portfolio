@@ -26,6 +26,7 @@
 
   &__issuer-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem;
   }
@@ -116,7 +117,7 @@
 .cert-featured {
   position: relative;
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: 2rem;
   margin-bottom: 1.25rem;
   padding: 2.25rem;
@@ -127,7 +128,7 @@
     var(--color-bg-card);
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 1.5rem;
     gap: 1.5rem;
   }
