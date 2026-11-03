@@ -11,9 +11,14 @@
       <!-- Content -->
       <div class="hero__content">
         <!-- Badge -->
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Software Developer @ FiveRegTech · Full-Time
+        <div class="hero__badges">
+          <div class="hero__badge">
+            Software Developer @ FiveRegTech
+          </div>
+          <div class="hero__badge hero__badge--open">
+            <span class="hero__badge-dot"></span>
+            Open to new opportunities
+          </div>
         </div>
 
         <!-- Title -->
@@ -24,7 +29,7 @@
 
         <!-- Subtitle with Typewriter -->
         <div class="hero__subtitle">
-          <span class="hero__role">{{ displayRole }}</span>
+          <span class="hero__role">{{ displayRole() }}</span>
           <span class="hero__cursor">|</span>
         </div>
 
@@ -35,6 +40,15 @@
           <strong>Angular</strong>, <strong>Node.js</strong>, <strong>Express.js</strong> and
           <strong>MongoDB</strong>. Based in Greater Noida, India.
         </p>
+
+        <div class="hero__open">
+          <span class="hero__open-label">Open to roles</span>
+          <div class="hero__open-roles">
+            @for (role of openRoles; track role) {
+              <span class="chip">{{ role }}</span>
+            }
+          </div>
+        </div>
 
         <!-- Action Buttons -->
         <div class="hero__actions">
@@ -95,7 +109,9 @@
 
           <span class="hero__social-divider" aria-hidden="true">·</span>
 
-          <a href="mailto:vivek79054@gmail.com"
+          <a [href]="emailUrl"
+             target="_blank"
+             rel="noopener noreferrer"
              class="hero__social-link"
              aria-label="Send email">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

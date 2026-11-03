@@ -1,8 +1,7 @@
-import { Component, signal, OnInit, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { Component, signal, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { EMAIL, EMAIL_COMPOSE_URL, OPEN_ROLES } from '../hero/hero';
 
 interface ContactForm {
   name: string;
@@ -12,25 +11,27 @@ interface ContactForm {
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
-export class Contact implements OnInit, AfterViewInit {
-  private platformId = inject(PLATFORM_ID);
+export class Contact {
   private http = inject(HttpClient);
 
+  readonly openRoles = OPEN_ROLES;
+  readonly emailUrl = EMAIL_COMPOSE_URL;
   form: ContactForm = { name: '', email: '', message: '' };
   sending = signal(false);
   sent = signal(false);
   error = signal('');
+  copied = signal(false);
 
   contactInfo = [
     {
       icon: 'email',
       label: 'Email',
-      value: 'vivek79054@gmail.com',
-      href: 'mailto:vivek79054@gmail.com'
+      value: EMAIL,
+      href: EMAIL_COMPOSE_URL
     },
     {
       icon: 'phone',
@@ -52,25 +53,14 @@ export class Contact implements OnInit, AfterViewInit {
     }
   ];
 
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.initAnimations();
+  async copyEmail() {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    } catch {
+      window.prompt('Copy my email address:', EMAIL);
     }
-  }
-
-  private initAnimations() {
-    const els = document.querySelectorAll('#contact .fade-up');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    els.forEach(el => observer.observe(el));
   }
 
   async submit() {

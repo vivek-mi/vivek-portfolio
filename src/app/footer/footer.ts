@@ -1,6 +1,7 @@
 import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { EMAIL_COMPOSE_URL } from '../hero/hero';
 
 @Component({
   selector: 'app-footer',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Footer {
   private platformId = inject(PLATFORM_ID);
   year = new Date().getFullYear();
+  readonly emailUrl = EMAIL_COMPOSE_URL;
 
   scrollTo(id: string) {
     if (isPlatformBrowser(this.platformId)) {

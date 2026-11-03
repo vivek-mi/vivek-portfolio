@@ -1,6 +1,4 @@
-import { Component, OnInit, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 interface SkillCategory {
   label: string;
@@ -10,13 +8,10 @@ interface SkillCategory {
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule],
   templateUrl: './skills.html',
   styleUrl: './skills.scss'
 })
-export class Skills implements OnInit, AfterViewInit {
-  private platformId = inject(PLATFORM_ID);
-
+export class Skills {
   categories: SkillCategory[] = [
     {
       label: 'Frontend',
@@ -77,6 +72,16 @@ export class Skills implements OnInit, AfterViewInit {
       ]
     },
     {
+      label: 'AI & Productivity',
+      icon: '🤖',
+      skills: [
+        { name: 'Prompt Engineering', level: 'expert' },
+        { name: 'Claude (Pro)', level: 'expert' },
+        { name: 'AI-Assisted Development', level: 'expert' },
+        { name: 'Generative AI Tools', level: 'proficient' },
+      ]
+    },
+    {
       label: 'Tools & Practices',
       icon: '🔧',
       skills: [
@@ -90,25 +95,4 @@ export class Skills implements OnInit, AfterViewInit {
   ];
 
   levelLabel = { expert: 'Practical', proficient: 'Working', learning: 'Learning' };
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.initAnimations();
-    }
-  }
-
-  private initAnimations() {
-    const cards = document.querySelectorAll('#skills .skill-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05 });
-    cards.forEach(card => observer.observe(card));
-  }
 }

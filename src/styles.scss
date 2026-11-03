@@ -279,35 +279,24 @@ a {
   background-clip: text;
 }
 
-/* ===== ANIMATIONS ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+/* ===== SCROLL REVEAL =====
+   Content is visible by default; browsers with scroll-driven animations fade it in.
+   Uses `translate` (not `transform`) so card hover lifts keep working. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-up,
+    .skill-card {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
 }
 
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.7s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-}
-
-.skill-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 28px;
   }
 }
 

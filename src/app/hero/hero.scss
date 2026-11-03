@@ -104,6 +104,55 @@
     animation: pulse 2s infinite;
   }
 
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    @media (max-width: 900px) { justify-content: center; }
+
+    .hero__badge { margin: 0; }
+  }
+
+  &__badge--open {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.3);
+    color: var(--color-green);
+  }
+
+  &__open {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    @media (max-width: 900px) { align-items: center; }
+  }
+
+  &__open-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-muted);
+  }
+
+  &__open-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    @media (max-width: 900px) { justify-content: center; }
+  }
+
+  /* Intro: pure CSS so it starts at first paint */
+  &__badges, &__title-line, &__subtitle, &__description, &__open, &__actions, &__social {
+    animation: hero-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  &__title-line { animation-delay: 0.06s; }
+  &__title-line--accent { animation-delay: 0.12s; }
+  &__subtitle { animation-delay: 0.18s; }
+  &__description { animation-delay: 0.22s; }
+  &__open { animation-delay: 0.26s; }
+  &__actions { animation-delay: 0.3s; }
+  &__social { animation-delay: 0.34s; }
+
   /* Title */
   &__title {
     display: flex;
@@ -226,6 +275,7 @@
 
   /* Photo */
   &__photo-wrapper {
+    animation: hero-pop 0.7s 0.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     position: relative;
     display: flex;
     align-items: center;
@@ -402,6 +452,14 @@
 }
 
 /* Animations */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(16px); }
+}
+
+@keyframes hero-pop {
+  from { opacity: 0; transform: scale(0.95); }
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }

@@ -6,9 +6,46 @@
         Let's <span>Connect</span>
       </h2>
       <p class="section-subtitle">
-        I'm currently open to Full-Stack and MEAN Stack developer opportunities.
-        Reach out — I'd love to chat.
+        Recruiters and hiring managers are welcome to reach out about open roles.
       </p>
+    </div>
+
+    <div class="hire card fade-up">
+      <div class="hire__main">
+        <span class="hire__status">
+          <span class="hire__dot" aria-hidden="true"></span>
+          Open to new opportunities
+        </span>
+        <h3 class="hire__title">Hiring for a developer role?</h3>
+        <p class="hire__text">
+          I'm a full-time Software Developer at FiveRegTech, building production Angular, Node.js and
+          MongoDB applications. I'm open to full-time roles where I can own features end to end.
+        </p>
+        <div class="hire__roles">
+          @for (role of openRoles; track role) {
+            <span class="chip">{{ role }}</span>
+          }
+        </div>
+        <p class="hire__meta">Full-time · Greater Noida, Delhi NCR</p>
+      </div>
+      <div class="hire__actions">
+        <a class="btn btn-primary" [href]="emailUrl" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email me about a role
+        </a>
+        <button type="button" class="btn btn-outline" (click)="copyEmail()">
+          {{ copied() ? 'Copied ✓' : 'Copy email address' }}
+        </button>
+        <a class="btn btn-outline" href="/assets/resume/Vivek_Mishra_Resume.pdf" download="Vivek_Mishra_Resume.pdf">
+          Download Resume
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/vivekmishra01" target="_blank" rel="noopener noreferrer">
+          Connect on LinkedIn →
+        </a>
+      </div>
     </div>
 
     <div class="contact__layout">

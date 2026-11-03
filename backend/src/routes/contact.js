@@ -34,9 +34,15 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
 
   const { name, email, message } = req.body;
 
+  const canStore = require('mongoose').connection.readyState === 1;
+  const canEmail = Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
+  if (!canStore && !canEmail) {
+    console.error('Contact form: neither MongoDB nor SMTP is configured; message not delivered');
+    return res.status(503).json({ error: 'Contact form is not configured. Please email directly.' });
+  }
+
   try {
-    // Save to MongoDB if available
-    if (require('mongoose').connection.readyState === 1) {
+    if (canStore) {
       const Contact = require('../models/Contact');
       await Contact.create({
         name,
@@ -46,8 +52,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
       });
     }
 
-    // Optional: send email notification (configure SMTP in .env)
-    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (canEmail) {
       const nodemailer = require('nodemailer');
       const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -56,6 +61,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
       await transporter.sendMail({
         from: process.env.SMTP_USER,
         to: process.env.NOTIFY_EMAIL || 'vivek79054@gmail.com',
+        replyTo: email,
         subject: `Portfolio contact from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
       });

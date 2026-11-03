@@ -1,66 +1,73 @@
-import { Component, OnInit, ElementRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CommonModule } from '@angular/common';
 import { monthsSince } from '../experience/experience';
+
+export const EMAIL = 'vivek79054@gmail.com';
+// mailto: silently does nothing when no desktop mail app is configured, so open Gmail's web composer instead
+export const EMAIL_COMPOSE_URL =
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent('Job opportunity for Vivek Mishra')}`;
+
+export const OPEN_ROLES = [
+  'Software Developer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Full-Stack / MEAN Stack',
+  'Java Developer'
+];
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule],
   templateUrl: './hero.html',
   styleUrl: './hero.scss'
 })
-export class Hero implements OnInit {
+export class Hero implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
-  @ViewChild('heroRef') heroRef!: ElementRef;
 
   readonly experienceMonths = monthsSince(2026, 2);
-  roles = ['Software Developer', 'Full-Stack Developer', 'MEAN Stack Engineer', 'Angular Specialist'];
+  readonly openRoles = OPEN_ROLES;
+  readonly emailUrl = EMAIL_COMPOSE_URL;
+  roles = [
+    'Software Developer',
+    'Full-Stack Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'MEAN Stack Developer',
+    'Java Developer'
+  ];
   currentRole = 0;
-  displayRole = '';
+  displayRole = signal(this.roles[0]);
   isDeleting = false;
-  private typeTimer: any;
+  private typeTimer?: ReturnType<typeof setTimeout>;
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.startTyping();
-      this.initAnimations();
+      this.typeTimer = setTimeout(() => this.startTyping(), 1600);
     }
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.typeTimer);
   }
 
   private startTyping() {
     const role = this.roles[this.currentRole];
-    const speed = this.isDeleting ? 40 : 70;
+    const shown = this.displayRole();
+    let delay = this.isDeleting ? 22 : 42;
 
-    if (!this.isDeleting && this.displayRole.length < role.length) {
-      this.displayRole = role.substring(0, this.displayRole.length + 1);
-    } else if (this.isDeleting && this.displayRole.length > 0) {
-      this.displayRole = this.displayRole.substring(0, this.displayRole.length - 1);
+    if (!this.isDeleting && shown.length < role.length) {
+      this.displayRole.set(role.substring(0, shown.length + 1));
+    } else if (this.isDeleting && shown.length > 0) {
+      this.displayRole.set(shown.substring(0, shown.length - 1));
     } else if (!this.isDeleting) {
-      setTimeout(() => { this.isDeleting = true; this.startTyping(); }, 2200);
-      return;
+      this.isDeleting = true;
+      delay = 1600;
     } else {
       this.isDeleting = false;
       this.currentRole = (this.currentRole + 1) % this.roles.length;
+      delay = 200;
     }
 
-    this.typeTimer = setTimeout(() => this.startTyping(), speed);
-  }
-
-  private async initAnimations() {
-    try {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from('.hero__badge', { opacity: 0, y: 20, duration: 0.6, delay: 0.2 })
-        .from('.hero__title-line', { opacity: 0, y: 60, stagger: 0.15, duration: 0.9 }, '-=0.2')
-        .from('.hero__subtitle', { opacity: 0, y: 20, duration: 0.7 }, '-=0.4')
-        .from('.hero__description', { opacity: 0, y: 20, duration: 0.7 }, '-=0.5')
-        .from('.hero__actions', { opacity: 0, y: 20, duration: 0.7 }, '-=0.4')
-        .from('.hero__social', { opacity: 0, y: 20, duration: 0.6 }, '-=0.4')
-        .from('.hero__photo-wrapper', { opacity: 0, scale: 0.92, duration: 1.0 }, '-=1.2');
-    } catch (e) {}
+    this.typeTimer = setTimeout(() => this.startTyping(), delay);
   }
 
   scrollToProjects() {

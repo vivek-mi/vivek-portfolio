@@ -1,6 +1,6 @@
 # Vivek Mishra — Portfolio
 
-Personal portfolio built with the MEAN stack: an Angular 21 frontend (prerendered, GSAP animations)
+Personal portfolio built with the MEAN stack: an Angular 21 frontend (prerendered, CSS animations)
 and an Express + MongoDB backend for the contact form.
 
 ```
@@ -42,7 +42,9 @@ Requires **Node.js 20.19+ or 22+** (check with `node -v`).
    ```
 
    The API runs on http://localhost:3000, and the Angular dev server forwards `/api` calls to it.
-   Without `MONGODB_URI` or SMTP settings in `.env` it still runs: messages are accepted but not stored or emailed.
+   Set at least one of these in `backend/.env`, otherwise the form refuses messages and asks visitors to email you:
+   - `SMTP_USER` + `SMTP_PASS`: each message is emailed to you (Gmail **App Password**, see below)
+   - `MONGODB_URI`: each message is saved in MongoDB (`contacts` collection, kept for 90 days)
 
 ### Common edits
 
