@@ -8,8 +8,8 @@ vivek-portfolio/
 ├── src/              Angular app (sections live in src/app/<section>/)
 ├── public/assets/    Profile photo and resume PDF
 ├── backend/          Express API for the contact form (POST /api/contact)
-├── vercel.json       Frontend hosting config (Vercel)
-├── render.yaml       Backend hosting config (Render)
+├── api/index.js      Runs the backend as a Vercel serverless function in production
+├── vercel.json       Hosting config (Vercel: site + /api function)
 └── proxy.conf.json   Sends /api calls to the local backend during development
 ```
 
@@ -60,8 +60,8 @@ Requires **Node.js 20.19+ or 22+** (check with `node -v`).
 
 ## Deploy for free
 
-The site goes on **Vercel** and the contact API on **Render**. Both have free plans and deploy automatically
-every time you push to GitHub.
+Everything runs on **Vercel**'s free plan: the site is static files and the contact API runs as a serverless
+function (`api/index.js`, which reuses the Express app in `backend/src/app.js`). Every push to GitHub redeploys.
 
 ### 1. Push to GitHub
 
@@ -76,28 +76,25 @@ git remote add origin https://github.com/vivek-mi/vivek-portfolio.git
 git push -u origin main
 ```
 
-### 2. Backend on Render
-
-1. Sign in at https://render.com with GitHub.
-2. **New → Blueprint**, pick the repository. Render reads `render.yaml` and creates `vivek-portfolio-api`.
-3. Fill in the environment variables it asks for:
-   - `FRONTEND_URL` — your Vercel URL (you can set it after step 3)
-   - `MONGODB_URI` — *optional*, free cluster from https://www.mongodb.com/cloud/atlas
-   - `SMTP_USER` / `SMTP_PASS` — *optional*, a Gmail address and a Gmail **App Password** so each message is emailed to you
-4. When it's live, open `https://<your-service>.onrender.com/api/health` and you should see `{"status":"ok"}`.
-
-If Render gives the service a different URL than `vivek-portfolio-api.onrender.com`, update the
-`destination` in `vercel.json` to match and push again.
-
-> Free Render services sleep after 15 minutes without traffic, so the first contact-form message after
-> a quiet period can take up to a minute. Later ones are instant.
-
-### 3. Frontend on Vercel
+### 2. Deploy on Vercel
 
 1. Sign in at https://vercel.com with GitHub.
 2. **Add New → Project**, import the repository and click **Deploy**. `vercel.json` already sets the
    build command and output folder, so leave the other settings as they are.
-3. Your site is live at `https://<project>.vercel.app`. Calls to `/api/*` are forwarded to Render.
+3. Your site is live at `https://<project>.vercel.app`.
+
+### 3. Turn on the contact form
+
+Vercel → Project → **Settings → Environment Variables**, add at least one of these, then redeploy
+(**Deployments → ⋯ → Redeploy**):
+
+- `MONGODB_URI` — saves each message in MongoDB Atlas (free M0 cluster; allow access from `0.0.0.0/0`)
+- `SMTP_USER` + `SMTP_PASS` — emails each message to you (Gmail address and a Gmail **App Password**)
+
+Check it at `https://<project>.vercel.app/api/health`: it should show `"database":"connected"`.
+Messages are in Atlas → **Data Explorer** → `portfolio` → `contacts` (kept for 90 days).
+
+> Free Atlas clusters pause after a long time with no activity. If the form starts failing, resume the cluster in Atlas.
 
 **Custom domain (optional):** Vercel → Project → Settings → Domains.
 
