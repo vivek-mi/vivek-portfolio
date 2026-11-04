@@ -53,18 +53,24 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     }
 
     if (canEmail) {
-      const nodemailer = require('nodemailer');
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-      });
-      await transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to: process.env.NOTIFY_EMAIL || 'vivek79054@gmail.com',
-        replyTo: email,
-        subject: `Portfolio contact from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-      });
+      try {
+        const nodemailer = require('nodemailer');
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        });
+        await transporter.sendMail({
+          from: `"Portfolio contact form" <${process.env.SMTP_USER}>`,
+          to: process.env.NOTIFY_EMAIL || 'vivek79054@gmail.com',
+          replyTo: email,
+          subject: `Portfolio contact from ${name}`,
+          text: `Name: ${name}\nEmail: ${email}\n\n${message}\n\n(Reply to this email to answer ${name} directly.)`,
+        });
+      } catch (err) {
+        // The message is already in the database, so the visitor still gets a success
+        if (!canStore) throw err;
+        console.error('Contact email failed (message was saved):', err.message);
+      }
     }
 
     res.status(200).json({ message: 'Message sent successfully!' });
