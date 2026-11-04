@@ -196,6 +196,13 @@
   min-height: 120px;
 }
 
+.form-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+
+  &--ok { color: var(--color-green); }
+}
+
 .form-error {
   display: flex;
   align-items: flex-start;

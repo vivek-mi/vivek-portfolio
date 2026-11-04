@@ -1,7 +1,11 @@
 import { Component, signal, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import { EMAIL, EMAIL_COMPOSE_URL, OPEN_ROLES } from '../hero/hero';
+
+// Must match the backend's validation in backend/src/routes/contact.js
+const MIN_MESSAGE_LENGTH = 10;
 
 interface ContactForm {
   name: string;
@@ -18,6 +22,7 @@ interface ContactForm {
 export class Contact {
   private http = inject(HttpClient);
 
+  readonly minMessageLength = MIN_MESSAGE_LENGTH;
   readonly openRoles = OPEN_ROLES;
   readonly emailUrl = EMAIL_COMPOSE_URL;
   form: ContactForm = { name: '', email: '', message: '' };
@@ -63,21 +68,39 @@ export class Contact {
     }
   }
 
+  get messageLength() {
+    return this.form.message.trim().length;
+  }
+
   async submit() {
     if (!this.form.name || !this.form.email || !this.form.message) return;
     if (this.sending()) return;
+
+    if (this.messageLength < MIN_MESSAGE_LENGTH) {
+      this.error.set(`Please write a little more: your message needs at least ${MIN_MESSAGE_LENGTH} characters.`);
+      return;
+    }
 
     this.sending.set(true);
     this.error.set('');
 
     try {
-      await this.http.post('/api/contact', this.form).toPromise();
+      await firstValueFrom(this.http.post('/api/contact', this.form));
       this.sent.set(true);
       this.form = { name: '', email: '', message: '' };
-    } catch {
-      this.error.set('Something went wrong. Please email me directly at vivek79054@gmail.com');
+    } catch (err) {
+      this.error.set(this.errorMessage(err));
     } finally {
       this.sending.set(false);
     }
+  }
+
+  // Show the server's reason for problems the visitor can fix; fall back to email for everything else
+  private errorMessage(err: unknown): string {
+    if (err instanceof HttpErrorResponse) {
+      if (err.status === 400 && err.error?.errors?.length) return err.error.errors[0].msg;
+      if (err.status === 429) return `You've sent several messages already. Please try again later or email me at ${EMAIL}.`;
+    }
+    return `Something went wrong. Please email me directly at ${EMAIL}`;
   }
 }

@@ -148,7 +148,15 @@
                 name="message"
                 placeholder="Tell me about the role or opportunity..."
                 rows="5"
-                required></textarea>
+                required
+                aria-describedby="contact-message-hint"></textarea>
+              <span id="contact-message-hint" class="form-hint" [class.form-hint--ok]="messageLength >= minMessageLength">
+                @if (messageLength < minMessageLength) {
+                  At least {{ minMessageLength }} characters ({{ messageLength }}/{{ minMessageLength }})
+                } @else {
+                  Looks good
+                }
+              </span>
             </div>
 
             @if (error()) {
